@@ -1,0 +1,28 @@
+What book should you read next?
+
+We are lucky to live in a world where we have access to incredibly vast amount of data. On the flipside, it is very easy to become overwhelmed with the vast amount of choices we face in day to day activities. The book recommender app I want to propose, will hopefully make one of them easier for you. 
+
+Idea
+------------
+This book recommender app, given your goodreads shelf or initial choices of favorite books will make a small set of recommendations based on the information gathered from other goodreads.com users who share similar tastes using collaborative filtering algorithm.
+
+
+Data gathering methods
+------------------------
+To show some proof of concept, I needed to access some data demonstrating reading patterns of users. Goodreads.com users use bookshelves that are organized by default into "read", "currently-reading" and "to-read". The best way to access user reading patterns would be to parse the "read" bookshelf for a number of users to perform my data analysis on. Unfortunately, goodreads.com API doesn't directly allow us access to user information (userIDs) to access these shevlves. So I chose a book that I thought would have a wide readership -- "Harry Potter". I scrapped goodreads.com website to parse user information of all the people who rated Harry Potter Book 1 from book reviews section. I scrapped about 200 pages till goodreads.com did not allow me to read in any more information. 
+
+Once I had all this information at hand I used goodreads.com API to read data from "read" bookshelf of these users. This also proved challenging as a number of user don't rate their books or they make their bookshelves "private". I ended up having useful information from about 684 users and about 102056 book titles. 
+
+Exploratory Data Analysis
+--------------------------
+The whole idea hinges on the assumption that people who read liked certain books tend to have similar taste in books. So, as a proof of concept I wanted to demonstrate the fact that the data had a lot of similarity. Becuase all the users read Harry Potter,  I removed data pertaining to Harry Potter to eliminate the obvious bias that every user in this dataset probably like Harry Potter, which might skew further analysis of data.  From figure 1 it is also clear that the people who like Harry Potter also share tastes across genres like Fantasy, thrillers, etc, which probably makes this dataset a good start for generating a recommendation system.
+
+I then chose a user who rated the same number of books as the average number of rated books per user to generate a recommendation for her. I then chose users who read books in her "read" bookshelf. I wanted to visualize how similar the literary tastes across the other users were. Plot 2 is a 2D histogram represents the number of times a book has been rated by different users. I used a larger bin across both user IDs and book titles. So the plot is smoother, but the fact that there are a lot of dark vertical streaks means that in the dataset that I generated we will be able to generate a recommendation for the user.
+
+At data incubator, I would like to build a web application that would generate recommendations given a list of favorite books or a goodreads profile using collabrative filtering.
+ 
+
+
+
+
+
